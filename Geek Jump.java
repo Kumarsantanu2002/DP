@@ -63,3 +63,34 @@ class Solution{
     
 }
 
+
+=======================================================
+    
+class Solution{
+    public int minimumEnergy(int arr[],int N){
+       if(N==1)
+       {
+           return 0;
+       }
+       
+      int prev2=0;
+      int prev1=0;
+      int ss=Integer.MAX_VALUE;
+       
+       for(int i=1;i<N;i++)
+       {
+           
+           int fs=prev1+Math.abs(arr[i]-arr[i-1]);
+           if(i>1){
+               ss=prev2+Math.abs(arr[i]-arr[i-2]);
+           }
+           int curr=Math.min(fs,ss);
+           prev2=prev1;
+           prev1=curr;
+       }
+       return prev1;
+      
+    }
+    
+}
+
