@@ -28,3 +28,29 @@ class Solution {
          return dp[idx];
     }
 }
+
+==================================================================
+    class Solution {
+    int findMaxSum(int arr[], int n) {
+        if(n==1){
+            return arr[0];
+        }
+        if(n==2){
+            return Math.max(arr[0],arr[1]);
+        }
+        
+       int dp[]=new int[n];
+        dp[0]=arr[0];
+        for(int i=1;i<n;i++)
+        {
+            int fs=arr[i];
+            if(i>1){
+                fs+=dp[i-2];
+            }
+            int ss=dp[i-1];
+            
+            dp[i]=Math.max(fs,ss);
+        }
+        return dp[n-1];
+    }   
+}
